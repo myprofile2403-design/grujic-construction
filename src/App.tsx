@@ -184,13 +184,17 @@ function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <ServiceCard title="Zateplení a fasády" img="images/facade.png" desc="Provádíme zateplení fasád rodinných, bytových i panelových domů." />
+            <ServiceCard title="Napínané stropy" img="images/ceiling.png" desc="Moderní a elegantní řešení pro vaše stropy s dlouhou životností." />
             <ServiceCard title="Hydroizolační Fólie" img="images/foil.png" desc="Spolehlivá ochrana proti vodě a vlhkosti pro ploché střechy." />
             <ServiceCard title="Výstavba domů" img="images/house.png" desc="Váš vysněný dům postavený k dokonalosti, od základu po střechu." />
             <ServiceCard title="Sádrokartony" img="images/drywall.png" desc="Desky mají využití téměř u všech druhů staveb, kde je kladen důraz na kvalitu." />
             <ServiceCard title="Obklady a dlažby" img="images/tiles.png" desc="Zaměřujeme se na pokládku obkladů a dlažeb z různých materiálů." />
             <ServiceCard title="Malby a nátěry" img="images/painting.png" desc="Specializujeme se na malířské a lakýrnické práce, včetně nátěrů fasád a střech." />
+            <ServiceCard title="Zateplení a fasády" img="images/insulation.png" desc="Provádíme zateplení fasád rodinných, bytových i panelových domů." />
             <ServiceCard title="Rekonstrukce" img="images/reconstruction.png" desc="Specializujeme se na kompletní rekonstrukce bytů, rodinných domů a firem." />
             <ServiceCard title="Vodoinstalatérské a topenářské práce" img="images/plumbing.png" desc="Zajišťujeme kompletní vodoinstalatérské a topenářské práce." />
+            <ServiceCard title="Demolice" img="images/demolition.png" desc="Nabízíme profesionální a bezpečné demoliční práce všeho druhu." />
+            <ServiceCard title="Zemní práce" img="images/earthworks.png" desc="Provádíme veškeré zemní a výkopové práce spolehlivě a rychle." />
           </div>
         </div>
       </section>
@@ -256,13 +260,17 @@ function ServicesPage() {
       <p className="text-xl mb-12 text-gray-600">Nabízíme široké spektrum stavebních prací.</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         <ServiceCard title="Zateplení a fasády" img="images/facade.png" desc="Provádíme zateplení fasád rodinných, bytových i panelových domů." />
+        <ServiceCard title="Napínané stropy" img="images/ceiling.png" desc="Moderní a elegantní řešení pro vaše stropy s dlouhou životností." />
         <ServiceCard title="Hydroizolační Fólie" img="images/foil.png" desc="Spolehlivá ochrana proti vodě a vlhkosti pro ploché střechy." />
         <ServiceCard title="Výstavba domů" img="images/house.png" desc="Váš vysněný dům postavený k dokonalosti, od základu po střechu." />
         <ServiceCard title="Sádrokartony" img="images/drywall.png" desc="Desky mají využití téměř u všech druhů staveb, kde je kladen důraz na kvalitu." />
         <ServiceCard title="Obklady a dlažby" img="images/tiles.png" desc="Zaměřujeme se na pokládku obkladů a dlažeb z různých materiálů." />
         <ServiceCard title="Malby a nátěry" img="images/painting.png" desc="Specializujeme se na malířské a lakýrnické práce, včetně nátěrů fasád a střech." />
+        <ServiceCard title="Zateplení a fasády" img="images/insulation.png" desc="Provádíme zateplení fasád rodinných, bytových i panelových domů." />
         <ServiceCard title="Rekonstrukce" img="images/reconstruction.png" desc="Specializujeme se na kompletní rekonstrukce bytů, rodinných domů a firem." />
         <ServiceCard title="Vodoinstalatérské a topenářské práce" img="images/plumbing.png" desc="Zajišťujeme kompletní vodoinstalatérské a topenářské práce." />
+        <ServiceCard title="Demolice" img="images/demolition.png" desc="Nabízíme profesionální a bezpečné demoliční práce všeho druhu." />
+        <ServiceCard title="Zemní práce" img="images/earthworks.png" desc="Provádíme veškeré zemní a výkopové práce spolehlivě a rychle." />
       </div>
     </div>
   );
