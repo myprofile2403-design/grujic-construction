@@ -95,6 +95,7 @@ export default function ServicePage() {
                 src={image}
                 alt={service.h1}
                 className="w-full h-auto rounded-xl shadow-xl object-cover aspect-[4/3]"
+                loading="eager"
               />
             </div>
           </div>

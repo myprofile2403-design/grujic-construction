@@ -40,6 +40,8 @@ export default function Index() {
             src={images.bg_hero}
             alt="Stavební firma GRUJIČ CONSTRUCTION - luxusní stavební projekt"
             className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20"></div>
 
@@ -83,6 +85,7 @@ export default function Index() {
                   src={images.workers}
                   alt="Stavební tým GRUJIČ CONSTRUCTION při práci"
                   className="w-full h-auto rounded-xl shadow-xl object-cover aspect-[4/3]"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -270,6 +273,7 @@ function ServiceCard({
           src={image}
           alt={title}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          loading="lazy"
         />
       </div>
       <div className="p-3 sm:p-5 md:p-6 flex flex-col flex-1">
@@ -290,6 +294,7 @@ function ProjectCard({ image }: { image: string }) {
         src={image}
         alt="Realizovaný stavební projekt GRUJIČ CONSTRUCTION"
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
       />
     </div>
   );
