@@ -6,6 +6,8 @@ import SiteFooter from "../components/SiteFooter";
 import { images } from "../lib/images";
 import { business, SITE_URL, NOTIFY_EMAIL } from "../lib/business";
 import { services } from "../data/services";
+import { featuredProjects, moreProjects } from "../data/projects";
+import ProjectShowcase from "../components/ProjectShowcase";
 
 export default function Index() {
   const location = useLocation();
@@ -122,11 +124,31 @@ export default function Index() {
               <p className="text-xl text-[#555555] font-light">Realizované stavby a jejich kvalita</p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
-              <ProjectCard image={images.project1} />
-              <ProjectCard image={images.project2} />
-              <ProjectCard image={images.project3} />
-              <ProjectCard image={images.project4} />
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-10 sm:mb-16">
+              {featuredProjects.map((p) => (
+                <ProjectShowcase key={p.name} name={p.name} imageKeys={p.images} />
+              ))}
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#3a3a3a] mb-6 sm:mb-8">
+              Další realizace
+            </h3>
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-6">
+              {moreProjects.map((p) => (
+                <div key={p.name} className="rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={images[p.image as keyof typeof images]}
+                      alt={p.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="bg-white p-3">
+                    <h4 className="text-[#3a3a3a] font-medium text-xs sm:text-sm leading-snug">{p.name}</h4>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -144,29 +166,29 @@ export default function Index() {
                 <div className="space-y-6 mb-12">
                   <div>
                     <h3 className="text-[#D4A574] font-semibold text-sm mb-2">ADRESA</h3>
-                    <p className="text-white/80">{business.street}</p>
-                    <p className="text-white/80">
+                    <p className="text-[#D4A574]/90">{business.street}</p>
+                    <p className="text-[#D4A574]/90">
                       {business.city}, {business.postalCode}
                     </p>
                   </div>
                   <div>
                     <h3 className="text-[#D4A574] font-semibold text-sm mb-2">KONTAKT</h3>
-                    <p className="text-white/80">
-                      <a href={`tel:${business.phone}`} className="hover:text-[#D4A574] transition-colors">
+                    <p className="text-[#D4A574]/90">
+                      <a href={`tel:${business.phone}`} className="hover:text-white transition-colors">
                         Telefon: {business.phoneDisplay}
                       </a>
                     </p>
-                    <p className="text-white/80">
-                      <a href={`mailto:${business.email}`} className="hover:text-[#D4A574] transition-colors">
+                    <p className="text-[#D4A574]/90">
+                      <a href={`mailto:${business.email}`} className="hover:text-white transition-colors">
                         E-mail: {business.email}
                       </a>
                     </p>
                   </div>
                   <div>
                     <h3 className="text-[#D4A574] font-semibold text-sm mb-2">ÚDAJE</h3>
-                    <p className="text-white/80">Jednatel: {business.owner}</p>
-                    <p className="text-white/80">IČO: {business.ico}</p>
-                    <p className="text-white/80">DIČ: {business.dic}</p>
+                    <p className="text-[#D4A574]/90">Jednatel: {business.owner}</p>
+                    <p className="text-[#D4A574]/90">IČO: {business.ico}</p>
+                    <p className="text-[#D4A574]/90">DIČ: {business.dic}</p>
                   </div>
                 </div>
 
@@ -287,15 +309,4 @@ function ServiceCard({
   );
 }
 
-function ProjectCard({ image }: { image: string }) {
-  return (
-    <div className="group rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 aspect-square">
-      <img
-        src={image}
-        alt="Realizovaný stavební projekt GRUJIČ CONSTRUCTION"
-        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        loading="lazy"
-      />
-    </div>
-  );
-}
+
