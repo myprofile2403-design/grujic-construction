@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import SiteHeader from "../components/SiteHeader";
@@ -11,6 +11,29 @@ import ProjectShowcase from "../components/ProjectShowcase";
 
 export default function Index() {
   const location = useLocation();
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setFormStatus("sending");
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${NOTIFY_EMAIL}`, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      if (res.ok) {
+        setFormStatus("sent");
+        form.reset();
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  }
 
   // Support cross-page anchor links like <Link to="/#contact">
   useEffect(() => {
@@ -214,55 +237,78 @@ export default function Index() {
 
               {/* Contact Form */}
               <div className="bg-white/5 p-6 sm:p-8 md:p-10 rounded-xl border border-white/10">
-                <h3 className="text-2xl md:text-3xl font-bold mb-8">Napište nám</h3>
-                <form
-                  className="space-y-6"
-                  action={`https://formsubmit.co/${NOTIFY_EMAIL}`}
-                  method="POST"
-                >
-                  {/* Email subject */}
-                  <input type="hidden" name="_subject" value="Nová poptávka z webu GRUJIČ CONSTRUCTION" />
-                  {/* Nicely formatted email instead of raw POST dump */}
-                  <input type="hidden" name="_template" value="table" />
-                  {/* Skip FormSubmit's captcha page for a smoother mobile experience */}
-                  <input type="hidden" name="_captcha" value="false" />
-                  {/* Honeypot field against spam bots - keep hidden from real users */}
-                  <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
+                <h3 className="text-2xl md:text-3xl font-bold mb-2">Napište nám</h3>
+                <p className="text-white/60 text-sm mb-8">
+                  ✉{" "}
+                  <a href={`mailto:${business.email}`} className="text-amber-400 hover:text-amber-300 transition-colors">
+                    {business.email}
+                  </a>
+                </p>
 
-                  <input
-                    type="text"
-                    name="Jméno"
-                    placeholder="Vaše jméno"
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D4A574] transition-colors"
-                    required
-                  />
-                  <input
-                    type="email"
-                    name="Email"
-                    placeholder="Váš e-mail"
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D4A574] transition-colors"
-                    required
-                  />
-                  <input
-                    type="tel"
-                    name="Telefon"
-                    placeholder="Telefonní číslo"
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D4A574] transition-colors"
-                  />
-                  <textarea
-                    name="Zpráva"
-                    placeholder="Vaše zpráva"
-                    rows={5}
-                    className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D4A574] transition-colors resize-none"
-                    required
-                  ></textarea>
-                  <button
-                    type="submit"
-                    className="w-full bg-[#D4A574] text-white py-3 rounded-lg font-semibold hover:bg-[#C89860] transition-colors"
-                  >
-                    Odeslat
-                  </button>
-                </form>
+                {formStatus === "sent" ? (
+                  <div className="flex flex-col items-center justify-center py-16 text-center">
+                    <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
+                      <svg className="w-8 h-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-2">Zpráva odeslána!</h4>
+                    <p className="text-white/60 mb-6">Brzy se vám ozveme.</p>
+                    <button
+                      onClick={() => setFormStatus("idle")}
+                      className="text-amber-400 hover:text-amber-300 transition-colors text-sm underline"
+                    >
+                      Odeslat další zprávu
+                    </button>
+                  </div>
+                ) : (
+                  <form className="space-y-6" onSubmit={handleSubmit}>
+                    <input type="hidden" name="_subject" value="Nová poptávka z webu GRUJIČ CONSTRUCTION" />
+                    <input type="hidden" name="_template" value="table" />
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
+
+                    <input
+                      type="text"
+                      name="Jméno"
+                      placeholder="Vaše jméno"
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D4A574] transition-colors"
+                      required
+                    />
+                    <input
+                      type="email"
+                      name="Email"
+                      placeholder="Váš e-mail"
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D4A574] transition-colors"
+                      required
+                    />
+                    <input
+                      type="tel"
+                      name="Telefon"
+                      placeholder="Telefonní číslo"
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D4A574] transition-colors"
+                    />
+                    <textarea
+                      name="Zpráva"
+                      placeholder="Vaše zpráva"
+                      rows={5}
+                      className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-[#D4A574] transition-colors resize-none"
+                      required
+                    ></textarea>
+
+                    {formStatus === "error" && (
+                      <p className="text-red-400 text-sm">Chyba při odesílání. Zkuste to znovu nebo napište přímo na {business.email}.</p>
+                    )}
+
+                    <button
+                      type="submit"
+                      disabled={formStatus === "sending"}
+                      className="w-full bg-[#D4A574] text-white py-3 rounded-lg font-semibold hover:bg-[#C89860] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {formStatus === "sending" ? "Odesílám..." : "Odeslat"}
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </div>
