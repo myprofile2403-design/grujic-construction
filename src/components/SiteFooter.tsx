@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { business } from "@/lib/business";
+import { business } from "../lib/business";
 
 export default function SiteFooter() {
   return (
