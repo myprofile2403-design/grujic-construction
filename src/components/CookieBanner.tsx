@@ -6,17 +6,17 @@ const GA_ID = "G-XXXXXXXXXX";
 
 const cookieText = {
   cs: {
-    text: "Tento web používá cookies pro analytické účely (Google Analytics). Pomáhají nám zjistit, odkud návštěvníci přicházejí a jak web používají.",
+    text: "Tento web používá cookies pro analytické účely.",
     accept: "Přijmout",
     decline: "Odmítnout",
   },
   en: {
-    text: "This website uses cookies for analytics (Google Analytics). They help us understand where visitors come from and how they use the site.",
+    text: "This website uses cookies for analytics.",
     accept: "Accept",
     decline: "Decline",
   },
   sk: {
-    text: "Táto stránka používa cookies na analytické účely (Google Analytics). Pomáhajú nám zistiť, odkiaľ návštevníci prichádzajú a ako web používajú.",
+    text: "Táto stránka používa cookies na analytické účely.",
     accept: "Prijať",
     decline: "Odmietnuť",
   },
