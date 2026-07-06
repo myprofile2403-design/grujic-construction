@@ -20,7 +20,8 @@ export interface ServiceContent {
     | "demolition"
     | "earthworks"
     | "ceiling"
-    | "foil";
+    | "foil"
+    | "cleaning";
   intro: string[];
   benefits: string[];
   faq: ServiceFaq[];
@@ -325,6 +326,37 @@ export const services: ServiceContent[] = [
         question: "Opravujete i starší hydroizolaci ploché střechy?",
         answer:
           "Ano, provádíme diagnostiku stávající hydroizolace a její opravu nebo kompletní výměnu podle stavu střechy.",
+      },
+    ],
+  },
+  {
+    slug: "uklid",
+    cardTitle: "Úklid",
+    h1: "Profesionální úklidové služby Brno – kanceláře i po stavbě",
+    metaTitle: "Úklid Brno – kanceláře a po rekonstrukci | GRUJIČ CONSTRUCTION",
+    metaDescription:
+      "Profesionální úklidové služby v Brně – úklid kancelářských prostor a generální úklid po rekonstrukci nebo výstavbě. Rychle, spolehlivě, na klíč.",
+    imageKey: "cleaning",
+    intro: [
+      "Nabízíme profesionální úklidové služby pro kancelářské prostory i generální úklid po rekonstrukci nebo novostavbě v Brně a okolí. Naším cílem je předat vám prostor čistý, uklizený a připravený k okamžitému užívání.",
+      "Úklid po stavbě zahrnuje odstranění stavebního prachu, zbytků materiálů, čištění podlah, oken, dveří i sanitárních prostor. Pro kanceláře nabízíme pravidelný i jednorázový úklid přizpůsobený vašemu provozu.",
+    ],
+    benefits: [
+      "Generální úklid po rekonstrukci a výstavbě",
+      "Pravidelný i jednorázový úklid kanceláří",
+      "Odstranění stavebního prachu a zbytků materiálů",
+      "Čištění podlah, oken, dveří a sanitárních prostor",
+    ],
+    faq: [
+      {
+        question: "Provádíte úklid i po větší rekonstrukci bytu?",
+        answer:
+          "Ano, specializujeme se na generální úklid po stavebních pracích – odstraníme stavební prach, zbytky materiálů a předáme vám prostor v bezvadném stavu.",
+      },
+      {
+        question: "Nabízíte pravidelný úklid kanceláří?",
+        answer:
+          "Ano, pro firmy zajišťujeme pravidelný úklid kancelářských prostor podle domluveného harmonogramu – denní, týdenní i měsíční frekvence.",
       },
     ],
   },
