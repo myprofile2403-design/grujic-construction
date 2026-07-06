@@ -90,7 +90,7 @@ export const services: ServiceContent[] = [
     ],
   },
   {
-    slug: "zatepleni-fasad",
+    slug: "Zatepleni-fasad",
     cardTitle: "Zateplení a izolace fasád",
     h1: "Zateplení fasád a izolace domů Brno",
     metaTitle: "Zateplení fasád Brno – zateplovací systémy | GRUJIČ CONSTRUCTION",
